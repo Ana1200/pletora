@@ -72,4 +72,10 @@ function setq($sql,$die = false){  //Realizar una consulta a BD en primer nivel
 
   return($result);
  }
+ function usuario($id_usuario){
+  $sql = 'SELECT * FROM usuario WHERE id_usuario = "'.$id_usuario.'"';
+  $result = setq($sql);
+
+  return($result);
+ }
 ?>

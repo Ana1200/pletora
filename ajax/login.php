@@ -26,14 +26,16 @@ require '../modelo/Login.php';
         if ($rspta !== null) {
             $fetch = $rspta->fetch_object();
             if(isset($fetch)){
-                $_SESSION['id'] = $fetch->id_usuario;
-                $_SESSION['nombre'] = $fetch->nombre;
-                $_SESSION['apellido'] = $fetch->apellidos;
-                $_SESSION['email'] = $fetch->email;
+                $id_usuario = $fetch->id_usuario;
+                session_start();
+                // Almacenar el nombre de usuario en la sesión
+                $_SESSION['id'] = $id_usuario;
+
             }
-            echo json_encode($fetch);
+            echo $_SESSION['id'];
+
         } else {
-            echo json_encode(null);
+            echo "error";
         }
 
     break;

@@ -1,7 +1,6 @@
-<?php 
+<?php
+    include('datos_admin.php');
     include('header.php');
-    include('./query/funciones.php');
-    
 ?>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <main id="main">
@@ -19,7 +18,7 @@
                                 <tr>
                                     <th scope="col">ID</th>
                                     <th scope="col">Titulo</th>
-                                    <th scope="col">Categoria</th>
+                                    <th scope="col">Texto</th>
                                     <th scope="col">Autor</th>
                                     <th scope="col">Fecha</th>
                                     <th scope="col"></th>
@@ -32,7 +31,6 @@
                                     while($row = mysqli_fetch_array($result)){
                                         $datos[]=$row;
                                     }
-                                    $total=0;
                                     foreach($datos as $producto){
                                         $ID = $producto['ID_Nota'];
                                         $titulo = $producto['Titulo'];

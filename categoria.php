@@ -1,6 +1,6 @@
 <?php 
+    include('datos_admin.php');
     include('header.php');
-    include('./query/funciones.php');
 ?>
 
 <main id="main">

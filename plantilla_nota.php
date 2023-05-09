@@ -4,7 +4,6 @@ session_start();
 include('./query/funciones.php');
 include('header.php');
 $id = $_SESSION['id_nota'];
-echo $id;
 $sql = 'SELECT * FROM nota WHERE ID_Nota = "'.$id.'"';
 $result = setq($sql);
 $datos = Array();
@@ -25,14 +24,10 @@ while($row = mysqli_fetch_array($result)){
     $Fecha_Carga = $producto['Fecha_Carga'];
   }
   $parrafos = explode("\n", $TextoNota);
+
   $vercategoria = vercategoria($Categoria);
-  $cat = Array();
-  while($row = mysqli_fetch_array($result)){
-      $cat[]=$row;
-  }
-  foreach ($cat as $vercategory){
-    $VerCategoria = $vercategory['categoria'];
-  }
+  $datos = mysqli_fetch_assoc($vercategoria);
+  $VerCategoria = $datos['categoria'];
 ?>
   <title>Plétora ANA</title>
   <meta content="" name="description">
@@ -113,7 +108,7 @@ while($row = mysqli_fetch_array($result)){
           <div class="col-md-3">
             <!-- ======= Sidebar ======= -->
             <div class="aside-block">
-              <p>cedvc</p>
+              <p></p>
             </div>
           </div>
         </div>

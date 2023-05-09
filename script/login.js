@@ -160,8 +160,6 @@ function ver(element) {
         fila=($(this).parent('td').parent('tr'));
       });
       $(".eliminar").click(function(){
-          alert(idEliminar);
-          alert("funcion eliminar");
         $.ajax({
           url: "ajax/login.php?op=eliminarnota",
           method: 'POST',
@@ -170,6 +168,7 @@ function ver(element) {
           }
         }).done(function(res){
           console.log(res);
+          location.href = './notas.php';
         })
       });
     });

@@ -39,7 +39,7 @@ Class Login{
     }
     public function vernota($id){
         $sql = 'SELECT * FROM nota WHERE ID_Nota = "'.$id.'"';
-        $result = setq($sql,true);
+        $result = setq($sql);
         return($result);
         
     }

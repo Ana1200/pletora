@@ -58,8 +58,7 @@
                                         <?php echo $fecha; ?>
                                     </td>
                                     <td>
-                                        <a class="btnVer W-3" id="ver"  data-id="<?php echo $ID;?>"
-                                             onclick="ver()">
+                                        <a class="btnVer W-3" id="ver_<?php echo $ID;?>" data-id="<?php echo $ID;?>" onclick="ver(this)">
                                             <i class="fas fa-eye"></i> 
                                         </a>
                                         <a class="btnEditar W-3" id="editar"  data-id="<?php echo $ID;?>"

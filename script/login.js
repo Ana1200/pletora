@@ -130,17 +130,14 @@ function mostrar(){
         tipo.type = 'password';
     }
 }
-function ver() {
-    a = document.getElementById('ver');
-    var id = a.getAttribute('data-id');
-    console.log(id);
+function ver(element) {
+    var id = element.getAttribute('data-id');
+    alert(id);
     $.post("./ajax/login.php?op=vernota",{
           "id":id
       },function(data){
-       var datos = JSON.parse(data);
-       console.log(datos);
-       $('#titulo').val(datos.titulo);
-  $('#pie_foto').val(datos.pie_foto);
+       console.log(data);
+       location.href ='./plantilla_nota.php';
     });
   }
   function editar(){

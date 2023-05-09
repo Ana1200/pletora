@@ -25,8 +25,7 @@ $Carrusel = "";
 $exito    = "";
 $error      = "";
 
-//Subir nota
-try {
+
     if (isset($_POST['subir'])) {
 
         function getGUID()
@@ -104,7 +103,5 @@ try {
 <?php
         header("refresh:2;url=Notas.php");
     }
-} catch (Exception $e) {
-    echo "Problema con la conexion: " . $e->getMessage();
-}
+
 ?>

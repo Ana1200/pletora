@@ -39,13 +39,9 @@ Class Login{
     }
     public function vernota($id){
         $sql = 'SELECT * FROM nota WHERE ID_Nota = "'.$id.'"';
-        $result = setq($sql);
-        $rows = array();
-        while ($row = mysqli_fetch_assoc($result)) {
-            $rows[] = $row;
-        }
-        $json_data = json_encode($rows);
-        echo $json_data;
+        $result = setq($sql,true);
+        return($result);
+        
     }
     
 }

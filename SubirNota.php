@@ -1,6 +1,16 @@
 <?php
+session_start(); 
 include('query/subirnota.php');
 include('header.php');
+  $id_usuario = $_SESSION['id'];
+  $result = usuario($id_usuario);
+  $datos = Array();
+  while($row = mysqli_fetch_array($result)){
+      $datos[]=$row;
+  }
+  foreach($datos as $producto){
+      $nombre = $producto['nombre'];
+  }
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -26,11 +36,8 @@ include('header.php');
     <main id="main">
         <div class="container-fluid">
             <div class="row">
-                <?php 
-                    include('headeradmin.php');
-                ?>
+                <?php include('headeradmin.php');?>
                 <main class="col-md-9 ms-sm-auto col-lg-12px-md-4">
-                    <div class="mx-auto">
                     <div class="card">
                         <div class="card-header bg-danger">
                            <b> Subir Nota</b>

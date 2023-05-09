@@ -1,9 +1,10 @@
 
-<?php 
-include('header.php');
+<?php
+session_start(); 
 include('./query/funciones.php');
-
-$id = '16CBB118-ACFC-5E89-3736-DD94BB61FAFF';
+include('header.php');
+$id = $_SESSION['id_nota'];
+echo $id;
 $sql = 'SELECT * FROM nota WHERE ID_Nota = "'.$id.'"';
 $result = setq($sql);
 $datos = Array();

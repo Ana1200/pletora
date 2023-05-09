@@ -120,7 +120,23 @@ require '../modelo/Login.php';
     case 'vernota':
         $id = $_POST['id'];
 
-        $ver = $login->vernota($id);
+        $rspta = $login->vernota($id);
+        $fetch = $rspta->fetch_object();
+
+        $rspta = $login->vernota($id);
+        if ($rspta !== null) {
+            $fetch = $rspta->fetch_object();
+            if(isset($fetch)){
+                $ID_Nota = $fetch->ID_Nota;
+                session_start();
+                // Almacenar el ID
+                $_SESSION['id_nota'] = $ID_Nota;
+            }
+            echo $_SESSION['id_nota'];
+
+        } else {
+            echo "error";
+        }
     break;
  }
 ?>

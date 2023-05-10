@@ -138,5 +138,27 @@ require '../modelo/Login.php';
             echo "error";
         }
     break;
+    case 'editarnota':
+        $id = $_POST['id'];
+        $id = $_POST['id'];
+
+        $rspta = $login->vernota($id);
+        $fetch = $rspta->fetch_object();
+
+        $rspta = $login->vernota($id);
+        if ($rspta !== null) {
+            $fetch = $rspta->fetch_object();
+            if(isset($fetch)){
+                $ID_Nota = $fetch->ID_Nota;
+                session_start();
+                // Almacenar el ID
+                $_SESSION['id_nota_editar'] = $ID_Nota;
+            }
+            echo $_SESSION['id_nota_editar'];
+
+        } else {
+            echo "error";
+        }
+    break;
  }
 ?>

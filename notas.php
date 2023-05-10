@@ -61,8 +61,7 @@
                                         <a class="btnVer W-3" id="ver_<?php echo $ID;?>" data-id="<?php echo $ID;?>" onclick="ver(this)">
                                             <i class="fas fa-eye"></i> 
                                         </a>
-                                        <a class="btnEditar W-3" id="editar"  data-id="<?php echo $ID;?>"
-                                            onclick="editar()">
+                                        <a class="btnEditar W-3" id="editar_<?php echo $ID;?>" data-id="<?php echo $ID;?>" onclick="editar(this)">
                                             <i class="fas fa-edit"></i> 
                                         </a>
                                         <a class="btnEliminar W-3" id="eliminar"  data-id="<?php echo $ID;?>"

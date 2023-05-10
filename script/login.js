@@ -132,24 +132,19 @@ function mostrar(){
 }
 function ver(element) {
     var id = element.getAttribute('data-id');
-    alert(id);
     $.post("./ajax/login.php?op=vernota",{
           "id":id
       },function(data){
-       console.log(data);
        location.href ='./plantilla_nota.php';
     });
   }
-  function editar(){
-    a = document.getElementById('editar');
-    var id = a.getAttribute('data-id');
-    console.log(id);
-    $.post("./ajax/login.php?op=vernota",{
+  function editar(element){
+    var id = element.getAttribute('data-id');
+    alert(id);
+    $.post("./ajax/login.php?op=editarnota",{
           "id":id
       },function(data){
-       var datos = JSON.parse(data);
-       console.log(datos);
-       
+        location.href ='./EditarNota.php';
     });
   }
   $(document).ready(function(){
@@ -167,7 +162,6 @@ function ver(element) {
             id:idEliminar
           }
         }).done(function(res){
-          console.log(res);
           location.href = './notas.php';
         })
       });

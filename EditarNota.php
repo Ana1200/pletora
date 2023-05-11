@@ -1,6 +1,6 @@
 <?php
 session_start(); 
-include('query/subirnota.php');
+include('query/editarnota.php');
 include('header.php');
   $id_usuario = $_SESSION['id'];
   $result = usuario($id_usuario);
@@ -41,6 +41,22 @@ include('header.php');
                     <?php 
                         if(isset($_SESSION['id_nota_editar'])){
                             $id_editar = $_SESSION['id_nota_editar'];
+                            $result = editar($id_editar);
+                            $datos = Array();
+                                    while($row = mysqli_fetch_array($result)){
+                                        $datos[]=$row;
+                                    }
+                                    foreach($datos as $producto){
+                                        $ID = $producto['ID_Nota'];
+                                        $Cabeza = $producto['Titulo'];
+                                        $PieFoto = $producto['PieFoto'];
+                                        $Categoria = $producto['Categoria'];
+                                        $Descripcion = $producto['TextoNota'];
+                                        $Autor = $producto['Autor'];
+                                        $fecha = $producto['Fecha'];
+                                        $imagen = $producto['NombreImagen'];
+                                        $Intro = $producto['Introduccion'];
+                                    }
                     ?>
                     <div class="card">
                         <div class="card-header bg-danger">
@@ -49,16 +65,17 @@ include('header.php');
                         <div class="card-body">
                             <form action="" method="POST" enctype="multipart/form-data">
                                 <div class="mb-3 row">
+                                    <input type="hidden" name="id_nota" value="<?php echo $ID ?>">
                                     <label for="Fecha" class="col-sm-2 col-form-label">Fecha</label>
                                     <div class="col-sm-10">
-                                        <input type="date" name="Fecha" required pattern="\d{4}-\d{2}-\d{2}">
+                                        <input type="date" name="Fecha" value="<?php echo $fecha; ?>" required pattern="\d{4}-\d{2}-\d{2}">
                                         <span class="validity"></span>
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label for="Cabeza" class="col-sm-2 col-form-label">Cabeza</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="Cabeza" name="Cabeza" value="<?php echo $id_editar ?>" required>
+                                        <input type="text" class="form-control" id="Cabeza" name="Cabeza" value="<?php echo $Cabeza ?>" required>
                                         <span class="validity"></span>
                                     </div>
                                 </div>
@@ -86,7 +103,6 @@ include('header.php');
                                     <label for="categoria" class="col-sm-2 col-form-label">Categoría</label>
                                     <div class="col-sm-10">
                                         <select class="form-control" name="categoria" id="categoria">
-                                            <option value="">- Seleccionar -</option>
                                             <?php
                                             $result = categoria();
                                             $datos = Array();
@@ -103,13 +119,6 @@ include('header.php');
                                             }
                                             ?>
                                         </select>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3 row">
-                                    <label for="imagen1" class="col-sm-2 col-form-label">Imagen</label>
-                                    <div class="col-sm-10">
-                                        <input name="imagen" id="imagen" type="file" accept=".jpg, .jpeg, .png" />
                                     </div>
                                 </div>
 

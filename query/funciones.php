@@ -66,6 +66,22 @@ function setq($sql,$die = false){  //Realizar una consulta a BD en primer nivel
 
   return($result);
  }
+ function editar_nota($ID_Nota,$Cabeza,$PieFoto,$Categoria,$Descripcion,$Autor,$Fecha,$nombre_archivo,$Intro,$Carrusel,$fecha_actual){
+  $sql = 'UPDATE Nota SET 
+          Titulo = "'.$Cabeza.'",
+          PieFoto = "'.$PieFoto.'",
+          Categoria = "'.$Categoria.'",
+          TextoNota = "'.$Descripcion.'",
+          Autor = "'.$Autor.'",
+          Fecha = "'.$Fecha.'",
+          Introduccion = "'.$Intro.'",
+          Carrusel = "'.$Carrusel.'",
+          Fecha_Carga = "'.$fecha_actual.'"
+          WHERE ID_Nota = "'.$ID_Nota.'"';
+  $result = setq($sql);
+
+  return($result);
+ }
  function vercategoria($Categoria){
   $sql = 'SELECT categoria FROM categorias WHERE id = "'.$Categoria.'"';
   $result = setq($sql);
@@ -74,6 +90,12 @@ function setq($sql,$die = false){  //Realizar una consulta a BD en primer nivel
  }
  function usuario($id_usuario){
   $sql = 'SELECT * FROM usuario WHERE id_usuario = "'.$id_usuario.'"';
+  $result = setq($sql);
+
+  return($result);
+ }
+ function editar($id_editar){
+  $sql = 'SELECT*FROM nota WHERE ID_Nota = "'.$id_editar.'"';
   $result = setq($sql);
 
   return($result);

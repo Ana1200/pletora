@@ -104,7 +104,7 @@ function registro() {
                         "contraseñaconfirm" : contraseñaconfirm
                     }, function(data){
                         if(data !="null"){
-                            location.href ='../notas.php';
+                            location.href ='./notas.php';
                         }else{
                             alert("usuario y/o contraseña incorrectos");
                         }

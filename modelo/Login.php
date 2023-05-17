@@ -17,7 +17,7 @@ Class Login{
                     nombre = "'.$nombre.'",
                     apellidos = "'.$apellido.'",
                     email = "'.$email.'",
-                    contraseña = "'.$contraseña.'"';
+                    contraseña = PASSWORD("'.$contraseña.'")';
         $result = setq($sql);
         return($result);        
     }

@@ -140,7 +140,6 @@ function ver(element) {
   }
   function editar(element){
     var id = element.getAttribute('data-id');
-    alert(id);
     $.post("./ajax/login.php?op=editarnota",{
           "id":id
       },function(data){

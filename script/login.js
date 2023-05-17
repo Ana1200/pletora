@@ -57,14 +57,10 @@ function ingresar(){
             "contraseña":contraseña
         }, function(data){
             if(data !="null"){
-                console.log(data);
                 if(data){
-                    console.log("NO-QUIERO");
                         location.href ='./notas.php';
                     var usuario = JSON.parse(data);
                     if(usuario.id_usuario){
-                        console.log("usuario.id_usuario");
-                        console.log("NO-QUIERO");
                         location.href ='./notas.php';
                     }
                 }

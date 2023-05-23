@@ -7,7 +7,7 @@ Class Login{
     }
     public function verificar($email,$contraseña){
         $sql = 'SELECT * FROM usuario
-            WHERE email = "'.$email.'" AND contraseña = PASSWORD("'.$contraseña.'") OR c_rstpass = PASSWORD("'.$contraseña.'")';
+            WHERE email = "'.$email.'" AND contraseña = PASSWORD("'.$contraseña.'")';
         $result = setq($sql);
         return($result);
         

@@ -58,11 +58,16 @@ function ingresar(){
         }, function(data){
             if(data !="null"){
                 if(data){
+                    //console.log(data);
+                    if (data === "ERROR") {
+                        alert("usuario y/o contraseña incorrectos.");
+                      } else {
                         location.href ='./notas.php';
-                    var usuario = JSON.parse(data);
+                      }                      
+                    /* var usuario = JSON.parse(data);
                     if(usuario.id_usuario){
                         location.href ='./notas.php';
-                    }
+                    } */
                 }
             }else{
                 alert("usuario y/o contraseña incorrectos");

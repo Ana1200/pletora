@@ -16,6 +16,12 @@ function setq($sql,$die = false){  //Realizar una consulta a BD en primer nivel
   return($result);
  
  }
+ function Carousel(){
+  $sql = 'SELECT * FROM nota WHERE Carrusel = "1"';
+  $result = setq($sql);
+
+  return($result);
+ } 
  function logout(){
     session_start();
     session_destroy();

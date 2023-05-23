@@ -30,12 +30,13 @@ require '../modelo/Login.php';
                 session_start();
                 // Almacenar el nombre de usuario en la sesión
                 $_SESSION['id'] = $id_usuario;
-
+                echo $_SESSION['id'];  
+            }else{
+                echo "ERROR";
             }
-            echo $_SESSION['id'];
 
         } else {
-            echo "error";
+            echo "ERROR";
         }
 
     break;

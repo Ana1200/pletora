@@ -2,9 +2,19 @@
 <!-- ======= Entrevista Category Section ======= -->
 <section class="category-section">
       <div class="container" data-aos="fade-up">
-
+        <?php
+        $categoria = 9;
+        $result = vercategoria($categoria);
+        $datos = Array();
+        while($row = mysqli_fetch_array($result)){
+          $datos[]=$row;
+        }
+        foreach($datos as $producto){
+          $categoriaN = $producto['categoria'];
+        }
+        ?>
         <div class="section-header d-flex justify-content-between align-items-center mb-5">
-          <h2>Entrevista</h2>
+          <h2><?php echo $categoriaN;?></h2>
           <div><a href="category.html" class="more">Mira todas las Entrevista</a></div>
         </div>
 
@@ -16,7 +26,6 @@
               </a>
               <div>
                 <?php
-                  $categoria = 9;
                   $result =Seccion($categoria);
                   $datos = Array();
                   while($row = mysqli_fetch_array($result)){
@@ -35,7 +44,7 @@
                     $fechaFormateada = date("M-Y", strtotime($fecha));
                   }
                 ?>
-                <div class="post-meta"><span class="date">Entrevista</span> <span class="mx-1">&bullet;</span>
+                <div class="post-meta"><span class="date"><?php echo $categoriaN;?></span> <span class="mx-1">&bullet;</span>
                   <span><?php echo $fechaFormateada; ?></span>
                 </div>
                 <h3><a href="Corrupcion_Hidalgo.html"><?php echo $Intro?></a></h3>
@@ -74,7 +83,7 @@
                     ?>
                     <div class="post-entry-1 border-bottom">
                         <div class="post-meta">
-                            <span class="date">Entrevista</span>
+                            <span class="date"><?php echo $categoriaN;?></span>
                             <span class="mx-1">&bullet;</span>
                             <span><?php echo $fechaFormateada; ?></span>
                         </div>

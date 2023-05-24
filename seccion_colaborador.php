@@ -1,8 +1,18 @@
 <section class="category-section">
       <div class="container" data-aos="fade-up">
-
+        <?php
+        $categoria = 8;
+        $result = vercategoria($categoria);
+        $datos = Array();
+        while($row = mysqli_fetch_array($result)){
+          $datos[]=$row;
+        }
+        foreach($datos as $producto){
+          $categoriaN = $producto['categoria'];
+        }
+        ?>
         <div class="section-header d-flex justify-content-between align-items-center mb-5">
-          <h2>Colaboradores</h2>
+          <h2><?php echo $categoriaN;?></h2>
           <div><a href="" class="more">Ve todas las Colaboraciones</a></div>
         </div>
 
@@ -14,7 +24,6 @@
               </a>
               <div>
                 <?php
-                  $categoria = 8;
                   $result =Seccion($categoria);
                   $datos = Array();
                   while($row = mysqli_fetch_array($result)){
@@ -33,15 +42,15 @@
                     $fechaFormateada = date("M-Y", strtotime($fecha));
                   }
                 ?>
-                <div class="post-meta"><span class="date">Colaboradores</span> <span class="mx-1">&bullet;</span>
+                <div class="post-meta"><span class="date"><?php echo $categoriaN;?></span> <span class="mx-1">&bullet;</span>
                   <span><?php echo $fechaFormateada; ?></span>
                 </div>
-                <h3><a href="Violencia_mujeres.html">El Poder Judicial de Hidalgo y la LEGISLACIÓN</a></h3>
+                <h3><a href="Violencia_mujeres.html"><?php echo $Intro?></a></h3>
                 <p></p>
                 <div class="d-flex align-items-center author">
                   <div class="photo"><img src="assets/img/logo.png" alt="" class="img-fluid"></div>
                   <div class="name">
-                    <h3><a href="autor.html">Mario Ernesto Pfeiffer Islas</a></h3>
+                    <h3><a href="autor.html"><?php echo $autor?></a></h3>
                   </div>
                 </div>
               </div>
@@ -71,7 +80,7 @@
                       ?>
                       <div class="post-entry-1 border-bottom">
                           <div class="post-meta">
-                              <span class="date">Entrevista</span>
+                              <span class="date"><?php echo $categoriaN;?></span>
                               <span class="mx-1">&bullet;</span>
                               <span><?php echo $fechaFormateada; ?></span>
                           </div>

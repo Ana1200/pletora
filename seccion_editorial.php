@@ -8,13 +8,31 @@
 
         <div class="row">
           <div class="col-md-9">
-
-
             <div class="d-lg-flex post-entry-2">
               <a href="r4.2.html" class="me-4 thumbnail mb-4 mb-lg-0 d-inline-block">
                 <img src="assets/img/Fotos Edicion 4/r4.2.jpg" alt="" class="img-fluid">
               </a>
               <div>
+              <?php
+                  $categoria = 1;
+                  $result =Seccion($categoria);
+                  $datos = Array();
+                  while($row = mysqli_fetch_array($result)){
+                      $datos[]=$row;
+                  }
+                  foreach($datos as $producto){
+                    $ID = $producto['ID_Nota'];
+                    $titulo = $producto['Titulo'];
+                    $pie = $producto['PieFoto'];
+                    $categoria = $producto['Categoria'];
+                    $texto = $producto['TextoNota'];
+                    $autor = $producto['Autor'];
+                    $fecha = $producto['Fecha'];
+                    $imagen = $producto['NombreImagen'];
+                    $Intro = $producto['Introduccion'];
+                    $fechaFormateada = date("M-Y", strtotime($fecha));
+                  }
+                ?>
                 <div class="post-meta"><span class="date">Editorial</span> <span
                     class="mx-1">&bullet;</span> <span>Enero 2023</span></div>
                 <h3><a href="r4.2.html">Del espectáculo al Derecho</p>
@@ -27,25 +45,42 @@
               </div>
             </div>
           </div>
-
             <!-- =============================================================================== -->
- <!-- 
-            <div class="col-md-3">
+          <div class="col-md-3">
+            <?php
+              $result = Secciones($categoria);
+              $datos = array();
+              while ($row = mysqli_fetch_array($result)) {
+                  $datos[] = $row;
+              }
 
+              foreach ($datos as $producto) {
+                  $currentID = $producto['ID_Nota'];
 
-            <div class="post-entry-1 border-bottom">
-              <div class="post-meta"><span class="date">Plétora Lex</span> <span class="mx-1">&bullet;</span>
-                <span>Enero 2023</span>
-              </div>
-              <h2 class="mb-2"><a href="r4.6.html">Obtiene Auditoría reintegros y recuperaciones por más de 3 mdp</a></h2>
-              <span class="author mb-3 d-block">Alejandro Reyes</span>
-            </div>
-
-
- -->
-
-
-
+                  if ($currentID != $ID) {
+                      $titulo = $producto['Titulo'];
+                      $pie = $producto['PieFoto'];
+                      $categoria = $producto['Categoria'];
+                      $texto = $producto['TextoNota'];
+                      $autor = $producto['Autor'];
+                      $fecha = $producto['Fecha'];
+                      $imagen = $producto['NombreImagen'];
+                      $Intro = $producto['Introduccion'];
+                      $fechaFormateada = date("M-Y", strtotime($fecha));
+                      ?>
+                      <div class="post-entry-1 border-bottom">
+                          <div class="post-meta">
+                              <span class="date">Entrevista</span>
+                              <span class="mx-1">&bullet;</span>
+                              <span><?php echo $fechaFormateada; ?></span>
+                          </div>
+                          <h2 class="mb-2"><a href="r4.9.html"><?php echo $Intro ?></a></h2>
+                          <span class="author mb-3 d-block"><?php echo $autor ?></span>
+                      </div>
+                      <?php
+                  }
+              }
+              ?>
           </div>
         </div>
     </section>

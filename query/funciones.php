@@ -16,6 +16,18 @@ function setq($sql,$die = false){  //Realizar una consulta a BD en primer nivel
   return($result);
  
  }
+ function Seccion($categoria){
+  $sql = 'SELECT * FROM nota WHERE Categoria = "'.$categoria.'" ORDER BY fecha DESC LIMIT 1';
+  $result = setq($sql);
+
+  return($result);
+ }
+ function Secciones($categoria) {
+  $sql = 'SELECT * FROM nota WHERE Categoria = "'.$categoria.'"  ORDER BY fecha DESC LIMIT 3';
+  $result = setq($sql);
+
+  return $result;
+}
  function Carousel(){
   $sql = 'SELECT * FROM nota WHERE Carrusel = "1"';
   $result = setq($sql);

@@ -43,5 +43,15 @@ Class Login{
         return($result);
         
     }
+    public function desactivar($id, $table) {
+        $sql = 'UPDATE `' . $table . '` SET status = 0 WHERE id = "' . $id . '"';
+        $result = setq($sql);
+        return $result;
+    } 
+    public function activar($id, $table) {
+        $sql = 'UPDATE `' . $table . '` SET status = 1 WHERE id = "' . $id . '"';
+        $result = setq($sql);
+        return $result;
+    }    
     
 }

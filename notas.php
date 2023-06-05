@@ -9,16 +9,15 @@
             <?php 
                 include('headeradmin.php');
             ?>
-            <main class="col-md-9 ms-sm-auto col-lg-12px-md-4">
+            <main class="col-md-10 ms-sm-auto col-lg-12px-md-4">
               <div class="container-fluid my-3">
                 <h3>Notas</h3>
                     <div class="table-responsive">
                         <table class="table">
                             <thead class="table-danger">
                                 <tr>
-                                    <th scope="col">ID</th>
                                     <th scope="col">Titulo</th>
-                                    <th scope="col">Texto</th>
+                                    <th scope="col">Introducción</th>
                                     <th scope="col">Autor</th>
                                     <th scope="col">Fecha</th>
                                     <th scope="col"></th>
@@ -40,16 +39,17 @@
                                         $autor = $producto['Autor'];
                                         $fecha = $producto['Fecha'];
                                         $imagen = $producto['NombreImagen'];
+                                        $Introduccion = $producto['Introduccion'];
                                     ?>
                                 <tr>
-                                    <th>
+                                    <!-- <th>
                                         <?php echo $ID;?>
-                                    </th>
+                                    </th> -->
                                     <td>
                                         <?php echo $titulo; ?>
                                     </td>
                                     <td>
-                                        <?php echo $texto;?>
+                                        <?php echo $Introduccion;?>
                                     </td>
                                     <td>
                                         <?php echo $autor; ?>

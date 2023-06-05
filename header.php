@@ -2,6 +2,16 @@
 <html lang="es">
 
 <head>
+
+<!--  Google tag (gtag.js) 
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-PFG131XFBZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-PFG131XFBZ');
+  </script> -->
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -22,6 +32,7 @@
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.0-alpha1/css/bootstrap.min.css">
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
@@ -88,12 +99,10 @@
       </nav><!-- .navbar -->
 
       <div class="position-relative">
-        <a href="https://www.facebook.com/profile.php?id=100085504076212" target="_blank" class="mx-2"><span
+        <!-- <a href="https://www.facebook.com/profile.php?id=100085504076212" target="_blank" class="mx-2"><span
             class="bi-facebook"></span></a>
-        <a href="https://twitter.com/PletoraLex" target="_blank" class="mx-2"><span class="bi-twitter"></span></a>
-
-
-        <a href="#" class="mx-2 js-search-open"><span class="bi-search"></span></a>
+        <a href="https://twitter.com/PletoraLex" target="_blank" class="mx-2"><span class="bi-twitter"></span></a> -->
+        <a href="#" class="mx-2 js-search-open"><!-- <span class="bi-search"></span> --></a>
         <i class="bi bi-list mobile-nav-toggle"></i>
 
         <!-- ======= Search Form ======= -->
@@ -103,7 +112,7 @@
             <input type="text" placeholder="Search" class="form-control">
             <button class="btn js-search-close"><span class="bi-x"></span></button>
           </form>
-        </div><!-- End Search Form -->
+        </div>
 
       </div>
 

@@ -13,32 +13,101 @@
 
 <nav class="navbar1 navbar-dark bg-dark">
                 <div class="container-fluid d-lg-none d-md-none d-xl-none">
-                    <a class="navbar-brand text-white" href="admin.php"><h4><b><?php echo $nombre?></b></h4></a>
-                    <a class="navbar-brand text-white" href="perfil.php"><b>Ver perfil</b></a>
-                    <a class="navbar-brand text-white" href="notas.php"><b>Notas</b></a>
-                    <a class="navbar-brand text-white" href="categoria.php"><b>Categorias</b></a>
-                    <a class="navbar-brand text-white" href="./query/logout.php"><b>Cerrar sesión</b></a>
+                    <div class="row">
+                        <div class="col">
+                            <a class="navbar-brand text-white" ><h4><b><?php echo $nombre?></b></h4></a>
+                        </div>
+                        <div class="col">
+                            <a class="navbar-brand text-white" href="./query/logout.php"><b>Cerrar sesión</b>
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <a class="navbar-brand text-white" href="perfil.php">
+                        <i class="fa fa-user" aria-hidden="true"></i><b>Ver perfil</b>
+                    </a>
+                    <a class="navbar-brand text-white" href="notas.php">
+                        <i class="fa fa-sticky-note-o" aria-hidden="true"></i>    
+                        <b>Notas</b>
+                    </a>
+                    <a class="navbar-brand text-white" href="categoria.php">
+                        <b>Categorias</b>
+                    </a>
+                    <a class="navbar-brand text-white" href="edicion.php">
+                        <b>Edición Digital</b>
+                    </a>
+                    <a class="navbar-brand text-white" href="Colaboradores.php">
+                        <b>Colaboradores</b>
+                    </a>
+                    <a class="navbar-brand text-white" href="SubirNota.php">
+                        <b>Subir Nota</b>
+                    </a>
+                    <a class="navbar-brand text-white" href="Subiredicion.php">
+                        <b>Subir Edición Digital</b>
+                    </a>
+                    <a class="navbar-brand text-white" href="SubirColaboradores.php">
+                        <b>Subir Colaboradores</b>
+                    </a>
                 </div>
             </nav>
             <nav class="navbar1 navbar-dark bg-dark d-none d-md-block d-lg-block">
                 <div class="container-fluid ">
-                    <a class="navbar-brand text-white" href="admin.php"><h4><b><?php echo $nombre?></b></h4></a>
+                    <div class="row">
+                        <div class="col-10">
+                            <a class="navbar-brand text-white" ><h4><b><?php echo $nombre?></b></h4></a>
+                        </div>
+                        <div class="col-2">
+                            <a class="nav-link text-white" href="./query/logout.php"><b>Cerrar sesión
+                                <i class="fa fa-sign-out" aria-hidden="true"></i>
+                            </b></a>
+                        </div>
+                    </div>
                 </div>
             </nav>
-            <nav class="col-md-3 bg-dark sidebar1 d-none d-md-block">
+            <nav class="col-md-2 bg-dark sidebar1 d-none d-md-block">
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active text-white" href="perfil.php"><b>Ver perfil</b></a>
+                            <a class="nav-link active text-white" href="perfil.php">
+                                <i class="fa fa-user" aria-hidden="true"></i>    
+                                <b>Ver perfil</b>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="notas.php"><b>Notas</b></a>
+                            <a class="nav-link text-white" href="notas.php">
+                                <i class="fa fa-sticky-note-o" aria-hidden="true"></i>
+                                <b>Notas</b>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="categoria.php"><b>Categorias</b></a>
+                            <a class="nav-link text-white" href="categoria.php">
+                                <b>Categorias</b>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" href="./query/logout.php"><b>Cerrar sesión</b></a>
+                            <a class="nav-link text-white" href="edicion.php">
+                                <b>Edición Digital</b>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="Colaboradores.php">
+                                <b>Colaboradores</b>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="SubirNota.php">
+                                <b>Subir nota</b>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="Subiredicion.php">
+                                <b>Subir Edición Digital</b>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="SubirColaboradores.php">
+                                <b>Subir Colaboradores</b>
+                            </a>
                         </li>
                     </ul>
                 </div>

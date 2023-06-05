@@ -9,13 +9,12 @@
             <?php 
                 include('headeradmin.php');
             ?>
-            <main class="col-md-9 ms-sm-auto col-lg-12px-md-4">
+            <main class="col-md-10 ms-sm-auto col-lg-12px-md-4">
               <div class="container-fluid my-3">
                 <h3>Categorias</h3>
                 <table class="table">
                     <thead class="table-danger">
                         <tr>
-                            <th scope="col">ID</th>
                             <th scope="col">Categoria</th>
                             <th scope="col">Status</th>
                         </tr>
@@ -32,22 +31,20 @@
                                 $ID = $producto['id'];
                                 $categoria = $producto['categoria'];
                                 $status = $producto['status'];
+                                $isChecked = $status == 1 ? 'checked' : '';
                             ?>
                         <tr>
-                            <th>
-                                <?php
-                                    echo $ID;
-                                ?>
-                            </th>
                             <td>
                                 <?php
                                     echo $categoria;
                                 ?>
                             </td>
                             <td>
-                                <?php
-                                    status($status)
-                                ?>
+                                <!-- Default switch -->
+                                <div class="form-check form-switch form-switch-sm">
+                                    <input class="form-check-input" type="checkbox" id="flexSwitchCheckDefault"data-id="<?php echo $ID;?>"data-status="<?php echo $status;?>"  onchange="toggleActivation(this)" <?php echo $isChecked; ?>>
+                                    <label class="form-check-label" for="flexSwitchCheckDefault">Activar/Desactivar</label>
+                                </div>
                             </td>
                         </tr>
                         <?php
@@ -59,6 +56,7 @@
             </main>
         </div>
     </div>
+    <script src="./script/login.js"></script>
 </main>
 
 <?php 

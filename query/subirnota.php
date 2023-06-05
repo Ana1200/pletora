@@ -60,18 +60,46 @@ $error      = "";
         $Autor   = $_POST['Autor'];
         //Fecha de nota
         $Fecha   = $_POST['Fecha'];
+        //ID_NOTA
+        $ID_Nota =  getGUID();
         //nombre de la imagen subida de foto
         if (isset($_FILES['imagen'])) {
             // Obtener información del archivo
             $nombre_archivo = $_FILES['imagen']['name'];
-            $ubicacion = "C:/xampp/htdocs/Pletora php/assets/img/Img_Nota/";
-            $ubicacion_temporal = $_FILES['imagen']['tmp_name'];
-            move_uploaded_file($ubicacion_temporal, $ubicacion . $nombre_archivo);
-        } else {
-            $nombre_archivo = "no";
+            // Obtener información del archivo
+            $fileName = $_FILES['imagen']['name'];
+            $fileTmp = $_FILES['imagen']['tmp_name'];
+            $fileSize = $_FILES['imagen']['size'];
+            $fileError = $_FILES['imagen']['error'];
+            // Obtener la extensión del archivo
+            $fileExt = strtolower(pathinfo($fileName, PATHINFO_EXTENSION));
+
+            // Extensiones de archivo permitidas
+            $allowedExtensions = array('jpg', 'jpeg', 'png');
+
+            // Verificar si la extensión del archivo es válida
+            if (in_array($fileExt, $allowedExtensions)) {
+                // Verificar si no hay errores en la carga del archivo
+                if ($fileError === 0) {
+                    // Ruta donde se guardará la imagen 
+                    $ubicacion = "C:/xampp/htdocs/pletora/assets/img/Img_Nota/";
+                    // Generar un nombre único para la imagen usando $ID_Nota
+                    $nombre_archivo = $ID_Nota . '.' . $fileExt;
+                     // Ruta completa del archivo
+                    $fileNameNew = $ubicacion . $nombre_archivo;
+                    // Mover el archivo a la ubicación deseada
+                    move_uploaded_file($fileTmp, $fileNameNew);
+
+                    /* $ubicacion_temporal = $_FILES['imagen']['tmp_name'];
+                    move_uploaded_file($ubicacion_temporal, $ubicacion . $nombre_archivo); */
+                    echo "La imagen se ha subido correctamente.";
+                } else {
+                    echo "Error en la carga de la imagen.";
+                }
+            }  else {
+                echo "La extensión del archivo no está permitida. Por favor, selecciona una imagen JPEG o PNG.";
+            }
         }
-        //ID_NOTA
-        $ID_Nota =  getGUID();
         //Fecha de carga      
         $fecha_actual = date('Y-m-d H:i:s');
         //Carrusel

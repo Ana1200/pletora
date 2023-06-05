@@ -161,5 +161,23 @@ require '../modelo/Login.php';
             echo "error";
         }
     break;
+    case 'update_activation':
+        $id = $_POST['id'];
+        $status = $_POST['status'];
+        $table = $_POST['table'];
+
+        // Actualizar el estado en la base de datos según tus necesidades
+        // Aquí debes agregar tu código para realizar la actualización en la base de datos
+
+        if ($status == 0) {
+            // Código para activar el elemento en la base de datos
+            echo "El elemento ha sido activado en la base de datos.";
+            $rspta = $login->activar($id,$table);
+        } else {
+            // Código para desactivar el elemento en la base de datos
+            echo "El elemento NO ha sido desactivado en la base de datos.";
+            $rspta = $login->desactivar($id,$table);
+        }
+    break;
  }
 ?>

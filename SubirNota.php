@@ -73,9 +73,29 @@ include('header.php');
                                 </div>
                                 <div class="mb-3 row">
                                     <label for="Autor" class="col-sm-2 col-form-label">Autor</label>
-                                    <div class="col-sm-10">
+                                    <!-- <div class="col-sm-10">
                                         <input type="text" class="form-control" id="Autor" name="Autor" value="<?php echo $Autor ?>">
                                         <span class="validity"></span>
+                                    </div> -->
+                                    <div class="col-sm-10">
+                                        <select class="form-control" id="Autor" name="Autor">
+                                            <option value="">- Seleccionar -</option>
+                                            <?php
+                                            $result = autoresn();
+                                            $datos = Array();
+                                            while($row = mysqli_fetch_array($result)){
+                                                $datos[]=$row;
+                                            }
+                                            $total=0;
+                                            foreach($datos as $producto){
+                                                $ID = $producto['ID'];
+                                                $categoria = $producto['Nombre'];
+                                            ?>
+                                            <option value="<?php echo $ID ?>" <?php if ($Categoria == $ID) echo "selected" ?>><?php echo $categoria ?></option>
+                                            <?php
+                                            }
+                                            ?>
+                                        </select>
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
@@ -84,7 +104,7 @@ include('header.php');
                                         <select class="form-control" name="categoria" id="categoria">
                                             <option value="">- Seleccionar -</option>
                                             <?php
-                                            $result = categoria();
+                                            $result = categorian();
                                             $datos = Array();
                                             while($row = mysqli_fetch_array($result)){
                                                 $datos[]=$row;

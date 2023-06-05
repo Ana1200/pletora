@@ -29,7 +29,7 @@ while($row = mysqli_fetch_array($result)){
   $datos = mysqli_fetch_assoc($vercategoria);
   $VerCategoria = $datos['categoria'];
 ?>
-  <title>Plétora ANA</title>
+  <title>Plétora</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -66,7 +66,7 @@ while($row = mysqli_fetch_array($result)){
               <h1 class="mb-5"><?php echo $Titulo ?></h1> <!-- ======= Titulo ======= -->
               <p><span class="firstcharacter"><?php echo $parrafos[0];?></span></p> <!-- ======= PRIMER PARRAFO ======= -->
               <figure class="my-4">
-                <img src="assets/img/abuso.jpeg" alt="" class="img-fluid">
+                <img src="assets/img/Img_Nota/<?php echo $NombreImagen ?>" alt="" class="img-fluid">
                 <figcaption><?php echo $PieFoto ?></figcaption>   <!-- ======= PIE DE IMAGEN ======= -->
               </figure>
 

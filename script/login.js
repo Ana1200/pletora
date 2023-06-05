@@ -133,6 +133,7 @@ function mostrar(){
 }
 function ver(element) {
     var id = element.getAttribute('data-id');
+    console.log(id);
     $.post("./ajax/login.php?op=vernota",{
           "id":id
       },function(data){
@@ -147,6 +148,81 @@ function ver(element) {
         location.href ='./EditarNota.php';
     });
   }
+  function toggleActivation(element) {
+    var isChecked = document.getElementById("flexSwitchCheckDefault").checked;
+    var id = element.getAttribute('data-id');
+    var status = element.getAttribute('data-status');
+    var table = 'categorias';
+        console.log(status);
+        console.log(id);
+        console.log(table);
+    // Crear un objeto FormData para enviar los datos
+    var formData = new FormData();
+    formData.append('id', id);
+    formData.append('status', status);
+    formData.append('table', table);
+
+    // Enviar la solicitud a PHP para actualizar la base de datos
+    var xhr = new XMLHttpRequest();
+    xhr.open("POST", "./ajax/login.php?op=update_activation", true);
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            location.reload();
+            //console.log(xhr.responseText);
+        }
+    };
+    xhr.send(formData);
+    }
+    function toggleActivationed(element) {
+        var isChecked = document.getElementById("flexSwitchCheckDefault").checked;
+        var id = element.getAttribute('data-id');
+        var status = element.getAttribute('data-status');
+        var table = 'edicion';
+        console.log(status);
+        console.log(id);
+        console.log(table);
+        // Crear un objeto FormData para enviar los datos
+        var formData = new FormData();
+        formData.append('id', id);
+        formData.append('status', status);
+        formData.append('table', table);
+    
+        // Enviar la solicitud a PHP para actualizar la base de datos
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "./ajax/login.php?op=update_activation", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                //console.log(xhr.responseText);
+                location.reload();
+            }
+        };
+        xhr.send(formData);
+    }
+    function toggleActivationCola(element) {
+        var isChecked = document.getElementById("flexSwitchCheckDefault").checked;
+        var id = element.getAttribute('data-id');
+        var status = element.getAttribute('data-status');
+        var table = 'colaboradores';
+        console.log(status);
+        console.log(id);
+        console.log(table);
+        // Crear un objeto FormData para enviar los datos
+        var formData = new FormData();
+        formData.append('id', id);
+        formData.append('status', status);
+        formData.append('table', table);
+    
+        // Enviar la solicitud a PHP para actualizar la base de datos
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "./ajax/login.php?op=update_activation", true);
+        xhr.onreadystatechange = function() {
+            if (xhr.readyState === 4 && xhr.status === 200) {
+                //console.log(xhr.responseText);
+                location.reload();
+            }
+        };
+        xhr.send(formData);
+    }
   $(document).ready(function(){
     var idEliminar = -1;
     var fila;

@@ -179,5 +179,14 @@ require '../modelo/Login.php';
             $rspta = $login->desactivar($id,$table);
         }
     break;
+    case 'vermodalColaborador':
+        $id = $_POST['id'];
+        echo $id;
+        
+        $rspta = $login->vermodalColab($id);
+        $fetch = $rspta->fetch_object();
+    
+        echo json_encode($data);
+    break;
  }
 ?>

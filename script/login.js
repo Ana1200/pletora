@@ -43,8 +43,6 @@ function RestablecerContraseña(){
         alert("Por favor ingrese un email válido");
     }
 }
-
-
 function ingresar(){
     document.getElementById("enviarc").disabled = true;
     
@@ -223,6 +221,31 @@ function ver(element) {
         };
         xhr.send(formData);
     }
+	$(document).ready(function() {
+		$('#entrar').click(function() {
+			grecaptcha.ready(function() {
+                grecaptcha.execute('6LfQN3omAAAAALwZTp4MtKWbt9K6Tc83DWd57gsD', {
+                    action: 'validarUsuario'
+                }).then(function(token) {
+                    console.log(token);
+                    document.getElementById("token").value = token;
+                });
+			});
+		});
+	});
+    $(document).ready(function() {
+        $('#verColaborador').on('show.bs.modal', function(e) {
+            var id = $(e.relatedTarget).data('id');
+            var nombre = $(e.relatedTarget).data('nombre');
+            var semblanza = $(e.relatedTarget).data('sem');
+    
+            // Actualizar el título del modal
+            $('#modalTitle').text(nombre);
+    
+            // Actualizar el contenido del modal
+            $('#modalContent').text(semblanza);
+        });
+    });    
   $(document).ready(function(){
     var idEliminar = -1;
     var fila;

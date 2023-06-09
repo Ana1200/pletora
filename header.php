@@ -50,6 +50,9 @@
   * Author: BootstrapMade.com
   * License: https:///bootstrapmade.com/license/
   ======================================================== -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LfQN3omAAAAALwZTp4MtKWbt9K6Tc83DWd57gsD"></script>
+		
+		
 </head>
 
 <body>
@@ -69,32 +72,41 @@
 
     <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="index.php" class="logo d-flex align-items-center">
 
-        <a href="index.html"><img src="assets/img/LOGOTIPO.png" width="
+        <a href="index.php"><img src="assets/img/LOGOTIPO.png" width="
           60%" height="50%" alt="" class="img-fluid"></a>
       </a>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a href="Revistas.html">Edición Digital</a></li>
-          <li class="dropdown"><a href="autor.html"><span>Categorías</span> <i
+          <li><a href="revistas.php">Edición Digital</a></li>
+          <li class="dropdown"><a ><span>Categorías</span> <i
                 class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
-              <li><a href="resultados_categorias.html">Busca un Resultado</a></li>
-              <li><a href="#">Sociedad</a></li>
-              <li><a href="#">Colaboradores Invitados</a></li>
-              <li><a href="#">Investigación</a></li>
-              <li><a href="#">Desde lo Municipal</a></li>
-              <li><a href="#">Dónde Nacen las Leyes</a></li>
-              <li><a href="#">Ahora a Leer</a></li>
-              <li><a href="ciencia.html">Un Poco de Ciencia</a></li>
+              <?php
+              include 'query/funciones.php';
+              require_once ('query/config.php');
+              $result =categoria();
+              $data = Array();
+              while($row = mysqli_fetch_array($result)){
+                  $data[]=$row;
+              }
+              foreach($data as $producto){
+                $ID = $producto['id'];
+                $categoria = $producto['categoria'];
+              ?>
+              <!-- <li><a href="resultados_categorias.html">Busca un Resultado</a></li> -->
+              <li><a href="allnotice.php?id=<?php echo $ID?>&token=<?php echo hash_hmac('sha1',$ID, KEY_TOKEN);?>"><?php echo $categoria?></a></li>
+              <?php
+              }
+              ?>
             </ul>
           </li>
 
-          <li><a href="plantilla_nota.php">Sobre Nosotros</a></li>
-          <li><a href="contact.html">Contáctanos</a></li>
-          <li><a href="colaboradores.html">Colaboradores</a></li>
+          <li><a href="nosotros.php">Sobre Nosotros</a></li>
+          <li><a href="contactanos.php">Contáctanos</a></li>
+          <li><a href="colaboradorespletora.php">Colaboradores</a></li>
         </ul>
       </nav><!-- .navbar -->
 

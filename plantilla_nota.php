@@ -1,33 +1,55 @@
 
 <?php
 session_start(); 
-include('./query/funciones.php');
+require_once ('query/config.php');
 include('header.php');
-$id = $_SESSION['id_nota'];
-$sql = 'SELECT * FROM nota WHERE ID_Nota = "'.$id.'"';
-$result = setq($sql);
-$datos = Array();
-while($row = mysqli_fetch_array($result)){
-    $datos[]=$row;
-}
-  foreach($datos as $producto){
-    $ID_Nota = $producto['ID_Nota'];
-    $Titulo = $producto['Titulo'];
-    $PieFoto = $producto['PieFoto'];
-    $Categoria = $producto['Categoria'];
-    $TextoNota = $producto['TextoNota'];
-    $Autor = $producto['Autor'];
-    $Fecha = $producto['Fecha'];
-    $NombreImagen = $producto['NombreImagen'];
-    $Introduccion = $producto['Introduccion'];
-    $Carrusel = $producto['Carrusel'];
-    $Fecha_Carga = $producto['Fecha_Carga'];
-  }
-  $parrafos = explode("\n", $TextoNota);
 
-  $vercategoria = vercategoria($Categoria);
-  $datos = mysqli_fetch_assoc($vercategoria);
-  $VerCategoria = $datos['categoria'];
+$id= isset($_GET['id']) ? $_GET['id'] : NULL;
+$token= isset($_GET['token']) ? $_GET['token'] :NULL;
+
+if($id == '' || $token ==''){
+  echo ' Error al procesar la peticion';
+  exit;
+}else{
+  $token_tmp = hash_hmac('sha1',$id, KEY_TOKEN);
+    if($token == $token_tmp){
+      $sql = 'SELECT count(ID_Nota) FROM nota WHERE ID_Nota = "'.$id.'"';
+      $sql = setq($sql);
+      $row = mysqli_fetch_row($sql);
+
+      // Obtener el valor del contador
+      $contador = $row[0];
+      if($contador>0){
+        $sql = 'SELECT * FROM nota WHERE ID_Nota = "'.$id.'"';
+        $result = setq($sql);
+        $datos = Array();
+        while($row = mysqli_fetch_array($result)){
+            $datos[]=$row;
+        }
+          foreach($datos as $producto){
+            $ID_Nota = $producto['ID_Nota'];
+            $Titulo = $producto['Titulo'];
+            $PieFoto = $producto['PieFoto'];
+            $Categoria = $producto['Categoria'];
+            $TextoNota = $producto['TextoNota'];
+            $Autor = $producto['Autor'];
+            $Fecha = $producto['Fecha'];
+            $NombreImagen = $producto['NombreImagen'];
+            $Introduccion = $producto['Introduccion'];
+            $Carrusel = $producto['Carrusel'];
+            $Fecha_Carga = $producto['Fecha_Carga'];
+          }
+          $parrafos = explode("\n", $TextoNota);
+
+          $vercategoria = vercategoria($Categoria);
+          $datos = mysqli_fetch_assoc($vercategoria);
+          $VerCategoria = $datos['categoria'];
+      }
+    }else{
+      echo ' Error al procesar la peticion';
+      exit;
+    }     
+  }     
 ?>
   <title>Plétora</title>
   <meta content="" name="description">

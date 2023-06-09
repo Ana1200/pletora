@@ -16,9 +16,20 @@ function setq($sql,$die = false){  //Realizar una consulta a BD en primer nivel
   return($result);
  
  }
- 
+ function categoriasd(){
+  $sql = 'SELECT DISTINCT Categoria FROM nota ';
+   $result = setq($sql);
+
+   return($result);
+ }
  function colaboradores(){
   $sql = 'SELECT * FROM colaboradores ';
+   $result = setq($sql);
+
+   return($result);
+ }
+ function revistas(){
+  $sql = 'SELECT * FROM edicion ';
    $result = setq($sql);
 
    return($result);
@@ -51,6 +62,12 @@ function setq($sql,$die = false){  //Realizar una consulta a BD en primer nivel
   NombreImagen = "'.$nombre_archivo.'",
   URL = "'.$url.'",
   status = 1';
+  $result = setq($sql);
+
+  return($result);
+ }
+ function allnotice($id){
+  $sql = 'SELECT * FROM nota WHERE Categoria = "'.$id.'"';
   $result = setq($sql);
 
   return($result);

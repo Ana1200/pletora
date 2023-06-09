@@ -52,6 +52,11 @@ Class Login{
         $sql = 'UPDATE `' . $table . '` SET status = 1 WHERE id = "' . $id . '"';
         $result = setq($sql);
         return $result;
-    }    
+    }
+    public function vermodalColab($id){
+        $sql = 'SELECT * FROM colaboradores WHERE ID = "'.$id.'"';
+        $result = setq($sql);
+        return $result;
+    }  
     
 }

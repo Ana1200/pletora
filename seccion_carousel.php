@@ -1,5 +1,7 @@
  
- 
+ <?php
+  require_once('query/config.php');
+?>
  <!-- ======= Hero Slider Section ======= -->
  <section id="hero-slider" class="hero-slider">
       <div class="container-md" data-aos="fade-in">
@@ -8,7 +10,6 @@
             <div class="swiper sliderFeaturedPosts">
               <div class="swiper-wrapper">
               <?php
-                  include('query/funciones.php');
                   $result = Carousel();
                   $datos = Array();
                   while($row = mysqli_fetch_array($result)){
@@ -27,7 +28,7 @@
                   
                   ?>
                 <div class="swiper-slide">
-                  <a href="r4.8.html" class="img-bg d-flex align-items-end"
+                  <a href="plantilla_nota.php?id=<?php echo $producto['ID_Nota']?>&token=<?php echo hash_hmac('sha1',$producto['ID_Nota'], KEY_TOKEN);?>" class="img-bg d-flex align-items-end"
                     style="background-image: url('assets/img/Fotos Edicion 4/r4.8.2.png');">
                     <div class="img-bg-inner">
                       <h2><?php echo $titulo?></h2>

@@ -4,33 +4,12 @@
 
    
   <?php include('seccion_carousel.php')?>
-
+    
     <!-- ======= Entrevistas ======= -->  
     <?php include('seccion_entrevista.php')?>
     <!-- ============================================================= -->
 
-    <!-- ======= Colaboradores ======= -->    
-    <?php include('seccion_colaborador.php')?>          
-    <!-- ============================================================= -->
-
-    <!-- ======= Donde nacen las leyes ======= -->
-    <?php include('seccion_nacen_leyes.php')?>
-    <!-- ============================================================= -->
-
-    <!-- ======= Tecnociencia ======= -->
-    <?php include('seccion_tecnociencia.php')?>
-    <!-- ============================================================= -->
-
-    <!-- ======= Investigacion ======= -->
-    <?php include('seccion_investigacion.php')?>
-    <!-- ============================================================= -->
-
-    <!-- ======= Plétora Lex ======= -->
-    <?php include('seccion_pletora_lex.php')?>
-    <!-- ============================================================= -->
-
-    <!-- ======= Editorial ======= -->
-    <?php include('seccion_editorial.php')?>
+    
     <!-- ============================================================= -->
 
   </main><!-- End #main -->

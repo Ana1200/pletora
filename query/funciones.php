@@ -1,9 +1,9 @@
 <?php
 function setq($sql,$die = false){  //Realizar una consulta a BD en primer nivel
-  $dbuser = "root"; // El usuario
-  $dbpass = ""; // El Pass
-  $dbhost = "localhost"; // El host
-  $db = "pletora"; // Nombre de la base
+  $dbuser = "u382668586_PletoraX"; // El usuario
+  $dbpass = "Pletora18*"; // El Pass
+  $dbhost = "u382668586_PletoraX"; // El host
+  $db = "u382668586_PletoraX"; // Nombre de la base
   
   $mysqli = new mysqli($dbhost, $dbuser,$dbpass, $db);
   $mysqli->query("SET CHARACTER SET utf8");
@@ -15,6 +15,12 @@ function setq($sql,$die = false){  //Realizar una consulta a BD en primer nivel
  
   return($result);
  
+ }
+ function usuario($id_usuario){
+  $sql = 'SELECT * FROM usuario WHERE id_usuario = "'.$id_usuario.'"';
+  $result = setq($sql);
+
+  return($result);
  }
  function categoriasd(){
   $sql = 'SELECT DISTINCT Categoria FROM nota ';
@@ -174,12 +180,7 @@ function setq($sql,$die = false){  //Realizar una consulta a BD en primer nivel
 
   return($result);
  }
- function usuario($id_usuario){
-  $sql = 'SELECT * FROM usuario WHERE id_usuario = "'.$id_usuario.'"';
-  $result = setq($sql);
-
-  return($result);
- }
+ 
  function editar($id_editar){
   $sql = 'SELECT*FROM nota WHERE ID_Nota = "'.$id_editar.'"';
   $result = setq($sql);

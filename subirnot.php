@@ -1,22 +1,66 @@
 <?php
-include_once('funciones.php');
 
 //Definición de variables
-//Titulo 
-$nombre = "";
-//URL
-$semblanza = "";
-
+//Titulo de nota
+$Cabeza = "";
+//Descripcipn
+$Intro = "";
+//Pie de foto
+$PieFoto = "";
+//Categoría
+$Categoria = "";
+//Texto de nota
+$Descripcion = "";
+//Autor
+$Autor = "";
+//Fecha de nota
+$Fecha = "";
+//nombre de la imagen subida de foto
+$imagen = "";
+//ID_NOTA
+$ID_Nota = "";
+//Carrusel
+$Carrusel = "";
 $exito    = "";
 $error      = "";
 
 
     if (isset($_POST['subir'])) {
-        //Titulo
-        $nombre = $_POST['name'];
-        //URL
-        $semblanza = $_POST['semblanza'];
-        
+
+        function getGUID()
+        {
+            if (function_exists('com_create_guid')) {
+                return com_create_guid();
+            } else {
+                mt_srand((float)microtime() * 10000); //optional for php 4.2.0 and up.
+                $charid = strtoupper(md5(uniqid(rand(), true)));
+                $hyphen = chr(45); // "-"
+
+                $uuid = substr($charid, 0, 8) . $hyphen
+                    . substr($charid, 8, 4) . $hyphen
+                    . substr($charid, 12, 4) . $hyphen
+                    . substr($charid, 16, 4) . $hyphen
+                    . substr($charid, 20, 12); // "}"
+                return $uuid;
+            }
+        }
+
+        //Titulo de nota
+        $Cabeza        = $_POST['Cabeza'];
+        //Descripcipn
+        $Intro       = $_POST['Intro'];
+        //Pie de foto
+        $PieFoto     = $_POST['PieFoto'];
+        //Categoría
+        $Categoria   = $_POST['categoria'];
+        //Texto de nota
+        $Descripcion   = $_POST['descripcion'];
+        //Autor
+        $Autor   = $_POST['Autor'];
+        //Fecha de nota
+        $Fecha   = $_POST['Fecha'];
+        //ID_NOTA
+        $ID_Nota =  getGUID();
         //nombre de la imagen subida de foto
         if (isset($_FILES['imagen'])) {
             // Obtener información del archivo
@@ -37,9 +81,9 @@ $error      = "";
                 // Verificar si no hay errores en la carga del archivo
                 if ($fileError === 0) {
                     // Ruta donde se guardará la imagen 
-                    $ubicacion = "C:/xampp/htdocs/pletora/assets/img/Img_Colaboradores/";
+                    $ubicacion = "C:/xampp/htdocs/pletora/assets/img/Img_Nota/";
                     // Generar un nombre único para la imagen usando $ID_Nota
-                    $nombre_archivo = $nombre_archivo;
+                    $nombre_archivo = $ID_Nota . '.' . $fileExt;
                      // Ruta completa del archivo
                     $fileNameNew = $ubicacion . $nombre_archivo;
                     // Mover el archivo a la ubicación deseada
@@ -55,11 +99,18 @@ $error      = "";
                 echo "La extensión del archivo no está permitida. Por favor, selecciona una imagen JPEG o PNG.";
             }
         }
+        //Fecha de carga      
+        $fecha_actual = date('Y-m-d H:i:s');
+        //Carrusel
 
-        /* $sqlInsert   = "INSERT INTO Nota (ID_Nota, Titulo, PieFoto, Categoria, TextoNota, Autor, Fecha, NombreImagen, Introduccion, Carrusel, Fecha_Carga) 
-         values ('$ID_Nota','$Cabeza','$PieFoto','$Categoria','$Descripcion','$Autor','$Fecha','$nombre_archivo ','$Intro','$Carrusel',' $fecha_actual')"; */
+        if (isset($_POST["campoCheckbox"])) {
+            $Carrusel = true;
+            // echo "Campo de checkbox enviado: ".$_POST["campoCheckbox"]."<br/>";
+        } else {
+            $Carrusel = false;
+        }
 
-         $result = subircolaboradores($nombre,$nombre_archivo,$semblanza);
+         $result = subir($ID_Nota,$Cabeza,$PieFoto,$Categoria,$Descripcion,$Autor,$Fecha,$nombre_archivo,$Intro,$Carrusel,$fecha_actual);
         /* $q1     = mysqli_query($Conect, $sqlInsert); */
         if ($result) {
             $exito    = "Datos ingresados correctamente";
@@ -74,10 +125,11 @@ $error      = "";
             <?php echo $exito ?>
         </div>
         <script>
-            location.href = './Colaboradores.php';
+            location.href = './Notas.php';
         </script>
 <?php
-        /* header("refresh:2;url=Colaboradores.php"); */
+        /* header("refresh:2; url=Notas.php"); */
+
     }
 
 ?>

@@ -65,6 +65,11 @@ $error      = "";
         /* $q1     = mysqli_query($Conect, $sqlInsert); */
         if ($result) {
             $exito    = "Datos ingresados correctamente";
+            ?>
+            <script>
+                agregado();
+            </script>
+            <?php
         } else {
             $error      = "Error al ingresar datos";
         }
@@ -75,8 +80,11 @@ $error      = "";
         <div class="alert alert-success" role="alert">
             <?php echo $exito ?>
         </div>
+        <script>
+            /* location.href = './edicion.php'; */
+        </script>
 <?php
-        header("refresh:2;url=edicion.php");
+        /* header("refresh:2;url=edicion.php"); */
     }
 
 ?>

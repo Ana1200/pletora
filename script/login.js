@@ -196,6 +196,14 @@ function ver(element) {
         };
         xhr.send(formData);
     }
+    function agregado(){
+        Swal.fire({
+            title: 'Error!',
+            text: 'Do you want to continue',
+            icon: 'error',
+            confirmButtonText: 'Cool'
+          })
+    }
     function toggleActivationCola(element) {
         var isChecked = document.getElementById("flexSwitchCheckDefault").checked;
         var id = element.getAttribute('data-id');

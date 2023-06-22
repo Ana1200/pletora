@@ -1,7 +1,8 @@
 <?php
 session_start(); 
-include('query/subirnota.php');
 include('header.php');
+include('subirnot.php');
+
   $id_usuario = $_SESSION['id'];
   $result = usuario($id_usuario);
   $datos = Array();

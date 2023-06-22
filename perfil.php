@@ -1,6 +1,7 @@
 <?php
-    include('datos_admin.php');
+    include('sesion.php');
     include('header.php');
+    include('datos_admin.php');
 ?>
 
 <main id="main">

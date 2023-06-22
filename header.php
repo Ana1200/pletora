@@ -42,6 +42,8 @@
   <link href="assets/css/variables.css" rel="stylesheet">
   <link href="assets/css/main.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+  <script src="sweetalert2.min.js"></script>
+  <link rel="stylesheet" href="sweetalert2.min.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/js/bootstrap.min.js"></script>
 
   <!-- =======================================================
@@ -85,7 +87,7 @@
                 class="bi bi-chevron-down dropdown-indicator"></i></a>
             <ul>
               <?php
-              include 'query/funciones.php';
+              include './query/funciones.php';
               require_once ('query/config.php');
               $result =categoria();
               $data = Array();

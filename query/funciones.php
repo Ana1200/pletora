@@ -2,7 +2,8 @@
 function setq($sql,$die = false){  //Realizar una consulta a BD en primer nivel
   $dbuser = "u382668586_PletoraX"; // El usuario
   $dbpass = "Pletora18*"; // El Pass
-  $dbhost = "u382668586_PletoraX"; // El host
+  $dbhost = "89.117.9.103
+  "; // El host
   $db = "u382668586_PletoraX"; // Nombre de la base
   
   $mysqli = new mysqli($dbhost, $dbuser,$dbpass, $db);

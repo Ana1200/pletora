@@ -52,8 +52,7 @@
   * Author: BootstrapMade.com
   * License: https:///bootstrapmade.com/license/
   ======================================================== -->
-  <script src="https://www.google.com/recaptcha/api.js?render=6LfQN3omAAAAALwZTp4MtKWbt9K6Tc83DWd57gsD"></script>
-		
+  
 		
 </head>
 

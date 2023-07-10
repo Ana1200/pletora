@@ -153,7 +153,6 @@ require '../modelo/Login.php';
                 $ID_Nota = $fetch->ID_Nota;
                 session_start();
                 // Almacenar el ID
-                $_SESSION['id_nota_editar'] = $ID_Nota;
             }
             echo $_SESSION['id_nota_editar'];
 

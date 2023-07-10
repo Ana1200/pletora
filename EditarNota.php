@@ -1,24 +1,55 @@
 <?php
 session_start(); 
-include('query/editarnota.php');
+
+require_once ('query/config.php');
 include('header.php');
-  $id_usuario = $_SESSION['id'];
-  $result = usuario($id_usuario);
-  $datos = Array();
-  while($row = mysqli_fetch_array($result)){
-      $datos[]=$row;
-  }
-  foreach($datos as $producto){
-      $nombre = $producto['nombre'];
-  }
+$id= isset($_GET['id']) ? $_GET['id'] : NULL;
+$token= isset($_GET['token']) ? $_GET['token'] :NULL;
+
+if($id == '' || $token ==''){
+  echo ' Error al procesar la peticion';
+  exit;
+}else{
+  $token_tmp = hash_hmac('sha1',$id, KEY_TOKEN);
+    if($token == $token_tmp){
+      $sql = 'SELECT count(ID_Nota) FROM nota WHERE ID_Nota = "'.$id.'"';
+      $sql = setq($sql);
+      $row = mysqli_fetch_row($sql);
+
+      // Obtener el valor del contador
+      $contador = $row[0];
+      if($contador>0){
+        $sql = 'SELECT * FROM nota WHERE ID_Nota = "'.$id.'"';
+        $result = setq($sql);
+        $datos = Array();
+        while($row = mysqli_fetch_array($result)){
+            $datos[]=$row;
+        }
+          foreach($datos as $producto){
+            $ID_Nota = $producto['ID_Nota'];
+            $Titulo = $producto['Titulo'];
+            $PieFoto = $producto['PieFoto'];
+            $Categoria = $producto['Categoria'];
+            $TextoNota = $producto['TextoNota'];
+            $Autor = $producto['Autor'];
+            $Fecha = $producto['Fecha'];
+            $NombreImagen = $producto['NombreImagen'];
+            $Introduccion = $producto['Introduccion'];
+            $Carrusel = $producto['Carrusel'];
+            $Fecha_Carga = $producto['Fecha_Carga'];
+          }
+          $parrafos = explode("\n", $TextoNota);
+
+          $vercategoria = vercategoria($Categoria);
+          $datos = mysqli_fetch_assoc($vercategoria);
+          $VerCategoria = $datos['categoria'];
+      }
+    }else{
+      echo ' Error al procesar la peticion';
+      exit;
+    }     
+  }    
 ?>
-<!DOCTYPE html>
-<html lang="es">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/11.4.24/sweetalert2.all.js"></script>
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Datos del Empleado</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
     <style>
@@ -32,32 +63,16 @@ include('header.php');
     </style>
 </head>
 
-<body>
     <main id="main">
+    
         <div class="container-fluid">
             <div class="row">
-                <?php include('headeradmin.php');?>
+    
+                <?php include('datos_admin.php');
+                include('headeradmin.php');
+                ?>
                 <main class="col-md-9 ms-sm-auto col-lg-12px-md-4">
-                    <?php 
-                        if(isset($_SESSION['id_nota_editar'])){
-                            $id_editar = $_SESSION['id_nota_editar'];
-                            $result = editar($id_editar);
-                            $datos = Array();
-                                    while($row = mysqli_fetch_array($result)){
-                                        $datos[]=$row;
-                                    }
-                                    foreach($datos as $producto){
-                                        $ID = $producto['ID_Nota'];
-                                        $Cabeza = $producto['Titulo'];
-                                        $PieFoto = $producto['PieFoto'];
-                                        $Categoria = $producto['Categoria'];
-                                        $Descripcion = $producto['TextoNota'];
-                                        $Autor = $producto['Autor'];
-                                        $fecha = $producto['Fecha'];
-                                        $imagen = $producto['NombreImagen'];
-                                        $Intro = $producto['Introduccion'];
-                                    }
-                    ?>
+                    
                     <div class="card">
                         <div class="card-header bg-danger">
                            <b> Editar Nota</b>
@@ -75,14 +90,14 @@ include('header.php');
                                 <div class="mb-3 row">
                                     <label for="Cabeza" class="col-sm-2 col-form-label">Cabeza</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="Cabeza" name="Cabeza" value="<?php echo $Cabeza ?>" required>
+                                        <input type="text" class="form-control" id="Cabeza" name="Cabeza" value="<?php echo $Titulo ?>" required>
                                         <span class="validity"></span>
                                     </div>
                                 </div>
                                 <div class="mb-3 row">
                                     <label for="Intro" class="col-sm-2 col-form-label">Intro</label>
                                     <div class="col-sm-10">
-                                        <input type="text" class="form-control" id="Intro" name="Intro" value="<?php echo $Intro ?>" required>
+                                        <input type="text" class="form-control" id="Intro" name="Intro" value="<?php echo $Introduccion ?>" required>
                                         <span class="validity"></span>
                                     </div>
                                 </div>
@@ -125,7 +140,7 @@ include('header.php');
                                 <div class="mb-3 row">
                                     <label for="Descripcion" class="col-sm-2 col-form-label">Descripción</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3" value="<?php echo $Descripcion ?>"> <?php echo $Descripcion ?> </textarea>
+                                        <textarea class="form-control" id="descripcion" name="descripcion" rows="3" value="<?php echo $Descripcion ?>"> <?php echo $TextoNota ?> </textarea>
                                     </div>
                                 </div>
 
@@ -137,13 +152,12 @@ include('header.php');
                                 </div>
                                 <div class="container d-flex justify-content-center align-items-center">
                                     <div class="justify-content-center">
-                                        <input type="submit" name="subir" value="Guardar" class="btn btn-primary" />
+                                        <input type="submit" name="subir" value="Guardar" class="btn btn-primary" onclick="return confirm('¿Estás seguro de guardar los cambios?');" />
                                     </div>
                                 </div>
                             </form>
                         </div>
                     </div>
-                    <?php }?>
                 </main>
             </div>
         </div>
@@ -206,4 +220,5 @@ include('header.php');
 
 </html>
 <?php
+require './query/editarnota.php';
 include('footer.php');

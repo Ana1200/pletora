@@ -1,10 +1,9 @@
 <?php
 function setq($sql,$die = false){  //Realizar una consulta a BD en primer nivel
-  $dbuser = "u382668586_PletoraX"; // El usuario
-  $dbpass = "Pletora18*"; // El Pass
-  $dbhost = "89.117.9.103
-  "; // El host
-  $db = "u382668586_PletoraX"; // Nombre de la base
+  $dbuser = "root"; // El usuario u382668586_PletoraX
+  $dbpass = ""; // El Pass Pletora18*
+  $dbhost = "localhost"; // El host 89.117.9.103
+  $db = "pletora"; // Nombre de la base u382668586_PletoraX
   
   $mysqli = new mysqli($dbhost, $dbuser,$dbpass, $db);
   $mysqli->query("SET CHARACTER SET utf8");
@@ -143,23 +142,24 @@ function setq($sql,$die = false){  //Realizar una consulta a BD en primer nivel
   return($result);
  }
  function subir($ID_Nota,$Cabeza,$PieFoto,$Categoria,$Descripcion,$Autor,$Fecha,$nombre_archivo,$Intro,$Carrusel,$fecha_actual){
-  $sql = 'INSERT INTO Nota SET 
-          ID_Nota = "'.$ID_Nota.'",
-          Titulo = "'.$Cabeza.'",
-          PieFoto = "'.$PieFoto.'",
-          Categoria = "'.$Categoria.'",
-          TextoNota = "'.$Descripcion.'",
-          Autor = "'.$Autor.'",
-          Fecha = "'.$Fecha.'",
-          NombreImagen = "'.$nombre_archivo.'",
-          Introduccion = "'.$Intro.'",
-          Carrusel = "'.$Carrusel.'",
-          Fecha_Carga = "'.$fecha_actual.'"';
-  $result = setq($sql);
+  $sql = 'INSERT INTO Nota (ID_Nota, Titulo, PieFoto, Categoria, TextoNota, Autor, Fecha, NombreImagen, Introduccion, Carrusel, Fecha_Carga) VALUES (
+    "'.$ID_Nota.'",
+    "'.$Cabeza.'",
+    "'.$PieFoto.'",
+    "'.$Categoria.'",
+    "'.$Descripcion.'",
+    "'.$Autor.'",
+    "'.$Fecha.'",
+    "'.$nombre_archivo.'",
+    "'.$Intro.'",
+    "'.$Carrusel.'",
+    "'.$fecha_actual.'"
+  )';
+$result = setq($sql);
 
   return($result);
  }
- function editar_nota($ID_Nota,$Cabeza,$PieFoto,$Categoria,$Descripcion,$Autor,$Fecha,$nombre_archivo,$Intro,$Carrusel,$fecha_actual){
+ function editar_nota($ID_Nota,$Cabeza,$PieFoto,$Categoria,$Descripcion,$Autor,$Fecha,$Intro,$Carrusel,$fecha_actual){
   $sql = 'UPDATE Nota SET 
           Titulo = "'.$Cabeza.'",
           PieFoto = "'.$PieFoto.'",

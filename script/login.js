@@ -135,7 +135,7 @@ function ver(element) {
     $.post("./ajax/login.php?op=vernota",{
           "id":id
       },function(data){
-       location.href ='./plantilla_nota.php';
+       console.log('./plantilla_nota.php?id=');
     });
   }
   function editar(element){
@@ -144,6 +144,7 @@ function ver(element) {
           "id":id
       },function(data){
         location.href ='./EditarNota.php';
+        //console.log(data);
     });
   }
   function toggleActivation(element) {

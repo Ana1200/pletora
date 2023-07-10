@@ -59,15 +59,15 @@
                                         <?php echo $fecha; ?>
                                     </td>
                                     <td>
-                                        <a class="btnVer W-3" id="ver_<?php echo $ID;?>" data-id="<?php echo $ID;?>" onclick="ver(this)">
-                                            <i class="fas fa-eye"></i> 
+                                        <a href="plantilla_nota.php?id=<?php echo $ID?>&token=<?php echo hash_hmac('sha1',$ID, KEY_TOKEN);?>">
+                                            <button class="btn btn-primary">Ver<i class="fas fa-eye"></i> </button>
                                         </a>
-                                        <a class="btnEditar W-3" id="editar_<?php echo $ID;?>" data-id="<?php echo $ID;?>" onclick="editar(this)">
-                                            <i class="fas fa-edit"></i> 
+                                        <a href="EditarNota.php?id=<?php echo $ID?>&token=<?php echo hash_hmac('sha1',$ID, KEY_TOKEN);?>">
+                                            <button class="btn btn-warning">Editar<i class="fas fa-edit"></i></button> 
                                         </a>
                                         <a class="btnEliminar W-3" id="eliminar"  data-id="<?php echo $ID;?>"
                                             data-bs-toggle="modal" data-bs-target="#eliminaModal">
-                                            <i class="fa fa-trash"></i>
+                                            <button class="btn btn-danger">Eliminar<i class="fa fa-trash"></i></button>
                                         </a>
                                     </td>
                                 </tr>
